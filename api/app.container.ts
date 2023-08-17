@@ -1,10 +1,7 @@
 import { AppContainer } from "@expressots/core";
-import { AppModule } from "./app.module";
+import { Modules } from "./controllers";
 
 const appContainer = new AppContainer();
-
-const container = appContainer.create([
-    AppModule,
-]);
+const container = appContainer.create(Modules);
 
 export { container };

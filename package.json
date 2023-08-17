@@ -8,24 +8,27 @@
   "engines": {
     "node": ">=18.10",
     "npm": "please use yarn",
-    "pnpm":"please use yarn",
     "yarn": ">=1.22"
   },
   "scripts": {
     "prebuild": "rm -rf ./dist",
     "build": "tsc -p tsconfig.build.json",
-    "dev": "tsnd ./src/main.ts",
+    "dev": "tsnd api/main.ts",
     "prod": "node ./dist/main.js",
     "test": "jest",
     "test:watch": "jest --watchAll",
     "test:cov": "jest --coverage",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "lint": "eslint \"src/**/*.ts\" --fix"
+    "format": "prettier --write \\\"api/**/*.ts\\\" \\\"test/**/*.ts\\\"",
+    "lint": "eslint \\\"api/**/*.ts\\\" --fix"
   },
   "keywords": [],
   "dependencies": {
     "@expressots/core": "latest",
-    "dotenv": "^16.0.3",
+    "cheerio": "^1.0.0-rc.12",
+    "d3-dsv": "2",
+    "dotenv": "^16.3.1",
+    "hnswlib-node": "^2.0.0",
+    "html-to-text": "^9.0.5",
     "inversify": "^6.0.1",
     "inversify-binding-decorators": "^4.0.0",
     "inversify-express-utils": "^6.3.2",
