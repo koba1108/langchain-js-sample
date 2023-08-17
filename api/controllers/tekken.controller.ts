@@ -1,12 +1,16 @@
 import { BaseController } from "@expressots/core";
 import {
   controller,
-  httpGet,
-  request,
+  httpPost,
+  requestBody,
   response,
 } from "inversify-express-utils";
-import { Request, Response } from "express";
+import { Response } from "express";
 import { AppUseCase } from "../usecases/app.usecase";
+
+interface RequestBody {
+  prompt: string;
+}
 
 @controller("/tekken")
 class TekkenController extends BaseController {
@@ -14,10 +18,9 @@ class TekkenController extends BaseController {
     super("tekken-controller");
   }
 
-  @httpGet("/")
-  async tekken(@response() res: Response, @request() req: Request) {
-    const prompt = req.query.prompt as string;
-    return res.send(await this.appUseCase.tekken(prompt));
+  @httpPost("/")
+  async tekken(@response() res: Response, @requestBody() body: RequestBody) {
+    return res.send(await this.appUseCase.tekken(body.prompt));
   }
 }
 
